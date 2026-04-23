@@ -29,7 +29,7 @@ It leverages Auto Loader for scalable ingestion.
 
 - Silver(Clean Data):Handles data quality and filter out unexpected values for power output column.Schema enforcement used to avoid surprises at gold layer.Here we can implement "Quarantine" pattern to capture those new columns and manually evolve after review.In silver layer, I am using trigger as AvailableNow. As here we are using forward-fill window function ,this trigger ensures that spark can look across the entire newly arrived daily dataset to calculate forward fill correctly.It also ensures the silver stays synchronised with daily bronze ingestion. 
 
-- Gold Layer(Aggrated data): Strict schema.No trigger.And this calculates symmery statistics over 24-hour window.
+- Gold Layer(Aggregated data): Strict schema.No trigger.And this calculates symmery statistics over 24-hour window.
 
 **Unit Testing**
 - Finally to test this notebook locally, added one test cell for unit testing purpose.
