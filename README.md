@@ -20,9 +20,9 @@ turbine will always be in the same file (e.g. turbine 1 will always be in data_g
 day the csv will be updated with data from the last 24 hours, however the system is known to
 sometimes miss entries due to sensor malfunctions.
 
-Design Solution:
+**Design Solution:**
 This solution uses a Medallion Architecture (bronze,silver,gold) implemented in databrciks with pyspark and delta lake.
-It leverages Auto Loader for scalable ingestion and DLT concepts for data quality.
+It leverages Auto Loader for scalable ingestion.
 
 **- Design Overview:**
 - Bronze (Raw Data): Ingestion layer using Auto loader.It considers schema evolution, to capture all raw data without failing.Also in this scenario ,csvs are appended daily so we do not need cluster to be active all time. Hence trigger availableNow is used.
