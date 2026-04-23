@@ -1,4 +1,13 @@
 # Databricks notebook source
+# /// script
+# [tool.databricks.environment]
+# environment_version = "2"
+# ///
+source_path = "/Volumes/demo/dwh/turbinepowerstation"
+schema_path = "/Volumes/demo/dwh/turbinepowerstation/_schema"
+
+# COMMAND ----------
+
 # DBTITLE 1,Cell 3
 #data Ingestion to broze layer
 
@@ -53,11 +62,10 @@ silver_cleaned = silver_raw \
 # 3. Write to Silver Table
 (silver_cleaned.writeStream
     .format("delta")
-    .option("checkpointLocation", checkpoint_silver)
     .option("mergeSchema", "false")
     .outputMode("append")
     .trigger(availableNow=True)
-    .table("turbine_silver"))
+    .option("checkpointLocation", checkpoint_silver).table("turbine_silver"))
 
 
 # COMMAND ----------
