@@ -28,7 +28,10 @@ turbine_bronze= (raw_data.writeStream
 
 # COMMAND ----------
 
-display(spark.table("bronze_turbine").select("source_file").distinct())
+
+#check if files has loaded or not
+#display(spark.table("bronze_turbine").select("source_file").distinct())
+
 
 # COMMAND ----------
 
